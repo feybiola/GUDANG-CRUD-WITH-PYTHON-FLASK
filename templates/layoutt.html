@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+  <link rel="stylesheet" href="css/style.css">
+ 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+ <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+ </head>
+ <title>Gudang 672019267</title>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+  
+ <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand logo-text" href="#">FASHION_MART</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="{{ url_for('index') }}">Data Barang</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+           </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    
+  
+  
+
+   {% block content %}{% endblock %}
+   <script>
+    const btnDelete= document.querySelectorAll('.btn-delete');
+    if(btnDelete) {
+      const btnArray = Array.from(btnDelete);
+      btnArray.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          if(!confirm('Are you sure you want to delete it?')){
+            e.preventDefault();
+          }
+        });
+      })
+    }
+      
+    $(document).ready(function() {
+        $('#example').DataTable({     
+          "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+            "iDisplayLength": 3
+           } 
+        );
+    } );
+      
+    </script>
+
+       <!-- Optional JavaScript; choose one of the two! -->
+       <script src="js/bootstrap.bundle.min.js"></script>
+ </body>
+</html>
